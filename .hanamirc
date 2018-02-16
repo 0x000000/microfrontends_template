@@ -1,0 +1,3 @@
+project=microfrontends_template
+test=rspec
+template=erb
