@@ -1,3 +1,7 @@
 /db/*.sqlite
-/public/assets*
+/public/assets/*
+/public/assets.json
 /tmp
+.DS_Store
+/node_modules
+yarn-error.log

@@ -1,0 +1,29 @@
+{
+  "name": "microfrontends_template",
+  "version": "1.0.0",
+  "description": "Welcome to your new Hanami project!",
+  "main": "apps/web/frontend/index.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^0.28.9",
+    "file-loader": "^1.1.6",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "source-map-loader": "^0.2.3",
+    "static-loader": "^0.1.8",
+    "style-loader": "^0.20.2",
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.7.2",
+    "vue": "^2.5.13",
+    "vue-class-component": "^6.2.0",
+    "vue-property-decorator": "^6.0.0",
+    "vuex": "^3.0.1",
+    "webpack": "^3.11.0",
+    "webpack-cleanup-plugin": "^0.5.1",
+    "webpack-manifest-plugin": "^1.3.2"
+  }
+}
