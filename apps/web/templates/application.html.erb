@@ -3,9 +3,13 @@
   <head>
     <title>Web</title>
     <%= favicon %>
+
+    <%= stylesheet 'application' %>
   </head>
   <body>
     <%= yield %>
+
+    <button type="button" class="success button">Save</button>
 
     <%= javascript 'application' %>
   </body>

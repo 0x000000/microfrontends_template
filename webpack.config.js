@@ -1,6 +1,7 @@
 const path = require('path');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -28,12 +29,15 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.(?:sass|scss)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.(ico|png|svg|jpg|gif)$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
           name: '[name].[ext]'
         }
@@ -47,6 +51,7 @@ module.exports = {
     }
   },
   plugins: [
+    new ExtractTextPlugin('application.[contenthash].css'),
     new ManifestPlugin({
       fileName: path.join(__dirname, 'public/assets.json'),
       basePath: '/assets/',

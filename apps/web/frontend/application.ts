@@ -1,4 +1,5 @@
 import './favicon.ico';
+import './application.scss';
 
 interface Command {
   execute(): void
