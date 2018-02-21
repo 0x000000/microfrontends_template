@@ -19,19 +19,19 @@ This is one of possible ways to run Hamani app + Webpack
 
 ## Setup
 
-How to start Hanami server:
+To start, first run Webpack in watch mode:
 
 ```
 git clone ...
 cd microfrontends_template
 bundle
 bundle exec hanami db prepare
-bundle exec hanami server
-```
-
-How to start Webpack in watch mode (use different process / tab for your terminal app):
-
-```
 yarn
 webpack --watch --progress
+```
+
+Then, just run Hamani server. Use different process / tab for your terminal app:
+
+```
+bundle exec hanami server
 ```
