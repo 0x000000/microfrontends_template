@@ -1,6 +1,10 @@
 import './favicon.ico';
 import './application.scss';
 
+import Vue from 'vue';
+import AppView from './components/app/app_view';
+
+
 interface Command {
   execute(): void
 }
@@ -18,6 +22,11 @@ class BadCommand implements Command {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  new Vue({
+    el: '#app',
+    render: h => h(AppView)
+  });
+
   const commands: Array<Command> = [new GoodCommand(), new BadCommand()];
   commands.forEach((command: Command) => command.execute());
 });

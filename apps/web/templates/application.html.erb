@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Web</title>
-    <%= favicon %>
+<head>
+  <title>Web</title>
+  <%= favicon %>
 
-    <%= stylesheet 'application' %>
-  </head>
-  <body>
-    <%= yield %>
+  <%= stylesheet 'application' %>
+</head>
+<body>
 
-    <button type="button" class="success button">Save</button>
+<div id="app"></div>
 
-    <%= javascript 'application' %>
-  </body>
+<%= javascript 'vendor' %>
+<%= javascript 'application' %>
+</body>
 </html>

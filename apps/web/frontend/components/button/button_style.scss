@@ -1,0 +1,7 @@
+@mixin test() {
+  background-color: aqua;
+}
+
+.button {
+  @include test();
+}
