@@ -1,12 +1,12 @@
 {
   "name": "microfrontends_template",
   "version": "1.0.0",
-  "description": "Welcome to your new Hanami project!",
+  "description": "Hanami + Webpack + TypeScript + Vue.js",
   "main": "apps/web/frontend/index.ts",
   "directories": {
     "lib": "lib"
   },
-  "author": "",
+  "author": "Alexander Rudenka",
   "license": "ISC",
   "dependencies": {
     "css-loader": "^0.28.9",

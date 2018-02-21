@@ -1,33 +1,37 @@
-# Microfrontends Template
+# Microfrontends Template with Hanami
 
-Welcome to your new Hanami project!
+This is one of possible ways to run Hamani app + Webpack 
+
+# Features
+
+* Ready for dev environment (production config will be added soon)
+* Webpack integrated with Hamani to forget about ugly Rails-like asset pipeline
+* You can use default Hamani helpers like `favicon`, `stylesheet`, `javascript` with `fingerprint true` (support for CDN + SRI will be added in future if needed)
+* Integrated SCSS support + source maps
+* Integrated TypeScript 2.x support + source maps — enjoy power of well-designed typing system
+* Shipped with SCSS versions of latest ZURB Foundation framework
+* Added support for Vue.js + TypeScript with Class-Style Components (see https://vuejs.org/v2/guide/typescript.html#Class-Style-Vue-Components)
+* Vendor libs organized to vendor.js file
+* Application-wide SCSS will go to application.scss file instead of js embedding
+* No more JSX/TSX stuff — use separate html file to define your web component template (check frontend/components)
+* Embedded support for Scoped CSS for your web components (check https://vue-loader.vuejs.org/en/features/scoped-css.html)
+
 
 ## Setup
 
-How to run tests:
+How to start Hanami server:
 
 ```
-% bundle exec rake
+git clone ...
+cd microfrontends_template
+bundle
+bundle exec hanami db prepare
+bundle exec hanami server
 ```
 
-How to run the development console:
+How to start Webpack in watch mode (use different process / tab for your terminal app):
 
 ```
-% bundle exec hanami console
+yarn
+webpack --watch --progress
 ```
-
-How to run the development server:
-
-```
-% bundle exec hanami server
-```
-
-How to prepare (create and migrate) DB for `development` and `test` environments:
-
-```
-% bundle exec hanami db prepare
-
-% HANAMI_ENV=test bundle exec hanami db prepare
-```
-
-Explore Hanami [guides](http://hanamirb.org/guides/), [API docs](http://hanamirb.org/docs/1.0.0/), or jump in [chat](http://chat.hanamirb.org) for help. Enjoy! 🌸
