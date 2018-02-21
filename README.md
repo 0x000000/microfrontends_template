@@ -27,7 +27,7 @@ cd microfrontends_template
 bundle
 bundle exec hanami db prepare
 yarn
-webpack --watch --progress
+yarn run webpack
 ```
 
 Then, just run Hamani server. Use different process / tab for your terminal app:
