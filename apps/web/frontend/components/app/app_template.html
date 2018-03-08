@@ -1,3 +1,12 @@
 <div class="app">
-  <ps-button :text="text"></ps-button>
+  <nav>
+    <ul>
+      <li><router-link to="/">Index page</router-link></li>
+      <li><router-link to="/settings">Settings page</router-link></li>
+    </ul>
+  </nav>
+
+  <main>
+    <router-view></router-view>
+  </main>
 </div>

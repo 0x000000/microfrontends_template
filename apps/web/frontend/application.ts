@@ -1,32 +1,21 @@
-import './favicon.ico';
+import './images/favicon.ico';
 import './application.scss';
 
 import Vue from 'vue';
-import AppView from './components/app/app_view';
+import VueRouter from "vue-router";
 
+import routes from './routes';
+import AppView from './components/app/app_component';
 
-interface Command {
-  execute(): void
-}
-
-class GoodCommand implements Command {
-  execute(): void {
-    console.log("Hi!");
-  }
-}
-
-class BadCommand implements Command {
-  execute(): void {
-    throw "Boom!";
-  }
-}
 
 document.addEventListener("DOMContentLoaded", () => {
+  Vue.use(VueRouter);
+
+  const router = new VueRouter({routes: routes});
+
   new Vue({
     el: '#app',
+    router: router,
     render: h => h(AppView)
   });
-
-  const commands: Array<Command> = [new GoodCommand(), new BadCommand()];
-  commands.forEach((command: Command) => command.execute());
 });
