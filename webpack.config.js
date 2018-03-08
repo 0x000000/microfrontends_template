@@ -10,7 +10,8 @@ module.exports = {
     vendor: [
       "vue",
       "vuex",
-      "vue-class-component"
+      "vue-class-component",
+      "vue-router"
     ],
     application: path.join(__dirname, 'apps/web/frontend/application.ts')
   },
