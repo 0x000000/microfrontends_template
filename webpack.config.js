@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports = {
@@ -11,13 +11,13 @@ module.exports = {
       "vue",
       "vuex",
       "vue-class-component",
-      "vue-router"
+      "vue-router",
     ],
-    application: path.join(__dirname, 'apps/web/frontend/application.ts')
+    application: path.join(__dirname, 'apps', 'web', 'frontend', 'application.ts'),
   },
   output: {
     filename: '[name].[chunkhash].js',
-    path: path.join(__dirname, 'public/assets')
+    path: path.join(__dirname, 'public', 'assets'),
   },
   module: {
     rules: [
@@ -34,7 +34,7 @@ module.exports = {
             options: {
               scoped: true,
               transformToRequire: {
-                img: 'src'
+                img: 'src',
               }
             }
           }
@@ -44,25 +44,23 @@ module.exports = {
         test: /\.scss/,
         loader: 'sass-loader',
         options: {
-          sourceMap: true
+          sourceMap: true,
         }
       },
       {
         enforce: 'post',
         test: /\.s?css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+        ]
       },
       {
         test: /\.(ico|png|svg|jpg|gif)$/,
         loader: 'file-loader',
+        options: {
+          name: "[name].[hash].[ext]",
+        }
       },
     ],
   },
@@ -70,18 +68,23 @@ module.exports = {
     extensions: ['.ts', '.js', '.css', '.scss', '.html'],
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
+    new webpack.optimize.SplitChunksPlugin({
       name: "vendor",
       minChunks: Infinity,
     }),
-    new ExtractTextPlugin('application.[contenthash].css'),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+      chunkFilename: "[id].css",
+    }),
     new ManifestPlugin({
-      fileName: path.join(__dirname, 'public/assets.json'),
-      basePath: '/assets/',
-      reduce: (manifest, {name, path}) => {
-        manifest[name] = {target: path};
-        return manifest;
-      },
+      fileName: path.join(__dirname, 'public', 'assets.json'),
+      basePath: path.join(path.sep, 'assets', path.sep),
+      generate: (seed, files) => {
+        return files.reduce((manifest, file) => {
+          manifest[file.name] = {target: path.join(path.sep, 'assets', file.path)};
+          return manifest;
+        }, seed);
+      }
     }),
     new WebpackCleanupPlugin()
   ],
