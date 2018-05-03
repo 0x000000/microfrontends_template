@@ -1,7 +1,7 @@
 {
   "name": "microfrontends_template",
-  "version": "1.0.0",
-  "description": "Hanami + Webpack + TypeScript + Vue.js",
+  "version": "1.1.0",
+  "description": "Hanami + Webpack + TypeScript + Vue.js + Scss + ZURB Foundation",
   "main": "apps/web/frontend/index.ts",
   "directories": {
     "lib": "lib"
