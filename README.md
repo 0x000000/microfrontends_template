@@ -1,5 +1,7 @@
 # Microfrontends Template with Hanami
 
+![logos](https://github.com/0x000000/microfrontends_template/blob/master/apps/web/frontend/images/logos.png)
+
 The best way to run Hamani app + Webpack without dirty hacks 
 
 # Features
@@ -48,6 +50,7 @@ yarn build
 
 * [WIP] Examples for **Vuex**
 * [WIP] Testing with **Vue Test Utils**
+* Code style conventions
 * Hot Module Replacement (not all plugins support it right now)
 * Webpack 5+ (I am sure it will be released right after you finish your tunings for 4.x to break everything)
 * Build a tool to generate template with options
