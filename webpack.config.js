@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -7,13 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-    vendor: [
-      "vue",
-      "vuex",
-      "vue-class-component",
-      "vue-router",
-    ],
-    application: path.join(__dirname, 'apps', 'web', 'frontend', 'application.ts'),
+    application: path.join(__dirname, 'apps', 'web', 'frontend', 'application.ts')
   },
   output: {
     filename: '[name].[chunkhash].js',
@@ -67,11 +60,12 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.css', '.scss', '.html'],
   },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
+  },
   plugins: [
-    new webpack.optimize.SplitChunksPlugin({
-      name: "vendor",
-      minChunks: Infinity,
-    }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].css",
