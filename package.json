@@ -35,6 +35,7 @@
     "webpack-manifest-plugin": "2.0.0-rc.2"
   },
   "scripts": {
-    "webpack": "webpack --watch --progress --mode development"
+    "serve": "webpack --watch --progress --mode development",
+    "build": "webpack --mode production"
   }
 }
